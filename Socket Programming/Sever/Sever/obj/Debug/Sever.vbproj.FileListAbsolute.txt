@@ -1,0 +1,11 @@
+E:\My Projects\Vb.net\Vb.net-Examples\Socket Programming\Sever\Sever\bin\Debug\Sever.exe.config
+E:\My Projects\Vb.net\Vb.net-Examples\Socket Programming\Sever\Sever\bin\Debug\Sever.exe
+E:\My Projects\Vb.net\Vb.net-Examples\Socket Programming\Sever\Sever\bin\Debug\Sever.pdb
+E:\My Projects\Vb.net\Vb.net-Examples\Socket Programming\Sever\Sever\bin\Debug\Sever.xml
+E:\My Projects\Vb.net\Vb.net-Examples\Socket Programming\Sever\Sever\obj\Debug\Sever.vbprojResolveAssemblyReference.cache
+E:\My Projects\Vb.net\Vb.net-Examples\Socket Programming\Sever\Sever\obj\Debug\Sever.Resources.resources
+E:\My Projects\Vb.net\Vb.net-Examples\Socket Programming\Sever\Sever\obj\Debug\Sever.vbproj.GenerateResource.Cache
+E:\My Projects\Vb.net\Vb.net-Examples\Socket Programming\Sever\Sever\obj\Debug\Sever.vbproj.CoreCompileInputs.cache
+E:\My Projects\Vb.net\Vb.net-Examples\Socket Programming\Sever\Sever\obj\Debug\Sever.exe
+E:\My Projects\Vb.net\Vb.net-Examples\Socket Programming\Sever\Sever\obj\Debug\Sever.xml
+E:\My Projects\Vb.net\Vb.net-Examples\Socket Programming\Sever\Sever\obj\Debug\Sever.pdb

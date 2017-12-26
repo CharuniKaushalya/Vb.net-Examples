@@ -1,0 +1,12 @@
+E:\My Projects\Vb.net\Vb.net-Examples\Socket Programming\Client\Client\bin\Debug\Client.exe.config
+E:\My Projects\Vb.net\Vb.net-Examples\Socket Programming\Client\Client\bin\Debug\Client.exe
+E:\My Projects\Vb.net\Vb.net-Examples\Socket Programming\Client\Client\bin\Debug\Client.pdb
+E:\My Projects\Vb.net\Vb.net-Examples\Socket Programming\Client\Client\bin\Debug\Client.xml
+E:\My Projects\Vb.net\Vb.net-Examples\Socket Programming\Client\Client\obj\Debug\Client.vbprojResolveAssemblyReference.cache
+E:\My Projects\Vb.net\Vb.net-Examples\Socket Programming\Client\Client\obj\Debug\Client.Form1.resources
+E:\My Projects\Vb.net\Vb.net-Examples\Socket Programming\Client\Client\obj\Debug\Client.Resources.resources
+E:\My Projects\Vb.net\Vb.net-Examples\Socket Programming\Client\Client\obj\Debug\Client.vbproj.GenerateResource.Cache
+E:\My Projects\Vb.net\Vb.net-Examples\Socket Programming\Client\Client\obj\Debug\Client.vbproj.CoreCompileInputs.cache
+E:\My Projects\Vb.net\Vb.net-Examples\Socket Programming\Client\Client\obj\Debug\Client.exe
+E:\My Projects\Vb.net\Vb.net-Examples\Socket Programming\Client\Client\obj\Debug\Client.xml
+E:\My Projects\Vb.net\Vb.net-Examples\Socket Programming\Client\Client\obj\Debug\Client.pdb
