@@ -55,7 +55,11 @@ Partial Class Form1
         Me.btnServerStart = New System.Windows.Forms.Button()
         Me.txtConsole = New System.Windows.Forms.RichTextBox()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.ConnectionCountLabel = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.PortTextBox = New System.Windows.Forms.TextBox()
         Me.Panel1.SuspendLayout()
+        Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label1
@@ -415,7 +419,7 @@ Partial Class Form1
         'btnServerStart
         '
         Me.btnServerStart.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnServerStart.Location = New System.Drawing.Point(56, 428)
+        Me.btnServerStart.Location = New System.Drawing.Point(157, 428)
         Me.btnServerStart.Name = "btnServerStart"
         Me.btnServerStart.Size = New System.Drawing.Size(123, 37)
         Me.btnServerStart.TabIndex = 15
@@ -436,18 +440,44 @@ Partial Class Form1
         'Button1
         '
         Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(199, 428)
+        Me.Button1.Location = New System.Drawing.Point(292, 428)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(123, 37)
         Me.Button1.TabIndex = 17
         Me.Button1.Text = "Print Client"
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'StatusStrip1
+        '
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ConnectionCountLabel})
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 639)
+        Me.StatusStrip1.Name = "StatusStrip1"
+        Me.StatusStrip1.Size = New System.Drawing.Size(954, 22)
+        Me.StatusStrip1.TabIndex = 19
+        Me.StatusStrip1.Text = "StatusStrip1"
+        '
+        'ConnectionCountLabel
+        '
+        Me.ConnectionCountLabel.Name = "ConnectionCountLabel"
+        Me.ConnectionCountLabel.Size = New System.Drawing.Size(83, 17)
+        Me.ConnectionCountLabel.Text = "0 Connections"
+        '
+        'PortTextBox
+        '
+        Me.PortTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.PortTextBox.Location = New System.Drawing.Point(69, 435)
+        Me.PortTextBox.Name = "PortTextBox"
+        Me.PortTextBox.Size = New System.Drawing.Size(74, 22)
+        Me.PortTextBox.TabIndex = 20
+        Me.PortTextBox.Text = "1315"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(20.0!, 37.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(954, 661)
+        Me.Controls.Add(Me.PortTextBox)
+        Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.txtConsole)
         Me.Controls.Add(Me.btnServerStart)
@@ -480,6 +510,8 @@ Partial Class Form1
         Me.Text = "EFKA HOME"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        Me.StatusStrip1.ResumeLayout(False)
+        Me.StatusStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -518,4 +550,7 @@ Partial Class Form1
     Friend WithEvents btnServerStart As Button
     Friend WithEvents txtConsole As RichTextBox
     Friend WithEvents Button1 As Button
+    Friend WithEvents StatusStrip1 As StatusStrip
+    Friend WithEvents ConnectionCountLabel As ToolStripStatusLabel
+    Friend WithEvents PortTextBox As TextBox
 End Class
