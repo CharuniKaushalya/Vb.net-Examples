@@ -1,9 +1,21 @@
 ﻿Public Class Form2
 
     Dim eid As String = ""
-    Public Sub New(ByVal empid As String)
+    Dim machineInfo As MachineInfo
+    Public Sub New(ByVal empid As String, MachineInfo As MachineInfo)
         InitializeComponent()
         eid = empid
+        MachineInfo = MachineInfo
+        If MachineInfo IsNot Nothing Then
+            MsgBox("Speed " + MachineInfo.AverageSpeed.ToString)
+            TextBox5.Text = MachineInfo.TimeForCurrentSean
+            TextBox2.Text = MachineInfo.AverageSpeed
+            TextBox3.Text = MachineInfo.TotalRunTime
+            TextBox4.Text = MachineInfo.StoptimeBetweenSeams
+        End If
+
+
+
     End Sub
 
 

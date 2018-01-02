@@ -40,6 +40,8 @@ Public Class ConnectionInfo
         End Get
     End Property
 
+    Public Property MachineInfo As MachineInfo
+
     'The buffer size is an arbitrary value which should be selected based on the
     'amount of data you need to transmit, the rate of transmissions, and the
     'anticipalted number of clients. These are the considerations for designing

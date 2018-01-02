@@ -27,9 +27,17 @@ Public Class Form1
     End Sub
 
     Private Sub Button4_Click_1(sender As Object, e As EventArgs) Handles Machine2.Click
+        Dim MachineInfo As MachineInfo
+        Dim btnName As String = DirectCast(sender, Button).Name
+        Dim btnID As String = btnName.Substring(btnName.Length - 1)
+        For x As Integer = 0 To _Connections.Count - 1
+            If Not _Connections(x).ID = 0 And _Connections(x).ID = CInt(btnID) Then
+                MachineInfo = _Connections(x).MachineInfo
+            End If
+        Next
         Dim pass As String = "10"
-        Dim frm As New Form2(pass)
-        frm.ShowDialog()
+        Dim frm As New Form2(pass, MachineInfo)
+        frm.Show()
         Me.Hide()
     End Sub
 
@@ -65,8 +73,6 @@ Public Class Form1
                 Me.Invoke(doAppendOutput, _Connections(x)._Client.Client.RemoteEndPoint.ToString)
             Catch ex As Exception
             End Try
-
-
         Next
     End Sub
 
@@ -129,7 +135,7 @@ Public Class Form1
                             End While
                             Dim message As String = System.Text.Encoding.ASCII.GetString(messageBytes.ToArray)
 
-                            ResponseHandler(message)
+                            ResponseHandler(message, info)
                             Me.Invoke(doAppendOutput, info.Client.Client.RemoteEndPoint.ToString + ": " + message + ", " + DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss"))
                         End If
                     Else
@@ -196,15 +202,16 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub ResponseHandler(message As String)
+    Private Sub ResponseHandler(message As String, info As ConnectionInfo)
         MsgBox(message)
         Dim strArr() As String
-        Dim count As Integer
         strArr = message.Split(",")
-
-
+        Dim TimeForCurrentSean As Integer = CInt(strArr(0))
+        Dim AverageSpeed As Integer = CInt(strArr(1))
+        Dim TotalRunTime As Integer = CInt(strArr(2))
+        Dim StoptimeBetweenSeams As Integer = CInt(strArr(3))
+        info.MachineInfo = New MachineInfo(TimeForCurrentSean, AverageSpeed, TotalRunTime, StoptimeBetweenSeams)
     End Sub
-
 End Class
 
 
