@@ -4,6 +4,8 @@ Imports System.Net.Sockets
 Public Class ClientForm
     Private _Connection As ConnectionInfo
     Private _ServerAddress As IPAddress
+    Shared random As New Random()
+    Dim duration As Date
 
     Private Sub ClientForm_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         ValidateChildren()
@@ -17,6 +19,8 @@ Public Class ClientForm
                 Try
                     _Connection = New ConnectionInfo(_ServerAddress, CInt(PortTextBox.Text), AddressOf InvokeAppendOutput)
                     _Connection.AwaitData()
+                    duration = DateTime.Now.AddMinutes(1)
+                    Timer1.Start()
                 Catch ex As Exception
                     MessageBox.Show(ex.Message, "Error Connecting to Server", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                     ConnectButton.Checked = False
@@ -30,6 +34,9 @@ Public Class ClientForm
             ConnectButton.Image = My.Resources.Connect
             If _Connection IsNot Nothing Then _Connection.Close()
             _Connection = Nothing
+            Timer1.Stop()
+
+
         End If
     End Sub
 
@@ -80,6 +87,21 @@ Public Class ClientForm
         End If
         RichTextBox1.AppendText(message)
         RichTextBox1.ScrollToCaret()
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        Dim ts As TimeSpan = duration - DateTime.Now.AddSeconds(-1)
+        Label4.Text = ts.Minutes.ToString("00") & ":" & ts.Seconds.ToString("00")
+        If Label4.Text = "00:00" Then
+            Timer1.Stop()
+            Dim data As String = Convert.ToString(random.Next(10, 20)) + "," + Convert.ToString(random.Next(10, 20)) + "," + Convert.ToString(random.Next(10, 20)) + "," + Convert.ToString(random.Next(10, 20))
+            If _Connection IsNot Nothing AndAlso _Connection.Client.Connected AndAlso _Connection.Stream IsNot Nothing Then
+                Dim buffer() As Byte = System.Text.Encoding.ASCII.GetBytes(data)
+                _Connection.Stream.Write(buffer, 0, buffer.Length)
+            End If
+            duration = DateTime.Now.AddMinutes(1)
+            Timer1.Start()
+        End If
     End Sub
 End Class
 
