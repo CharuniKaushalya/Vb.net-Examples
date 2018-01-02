@@ -19,20 +19,22 @@ Public Class Form1
 
 
     Declare Auto Function SendMessage Lib "user32.dll" (ByVal hWnd As IntPtr, ByVal msg As Integer, ByVal wParam As Integer, ByVal lParam As Integer) As Integer
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnExit.Click
         Close()
     End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs)
         Form3.Show()
     End Sub
 
-    Private Sub Button4_Click_1(sender As Object, e As EventArgs) Handles Button4.Click
-        Form2.Show()
+    Private Sub Button4_Click_1(sender As Object, e As EventArgs) Handles Machine2.Click
+        Dim pass As String = "10"
+        Dim frm As New Form2(pass)
+        frm.ShowDialog()
         Me.Hide()
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        txtConsole.Text = ">> " + "Please Start Server" & vbNewLine
     End Sub
 
     Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles btnServerStart.Click
@@ -54,8 +56,11 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub Button1_Click_2(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click_2(sender As Object, e As EventArgs) Handles btnPrintClients.Click
         ''add Print Client Code
+        Machine4.BackColor = Color.Blue
+
+
         For x As Integer = 0 To _Connections.Count - 1
             Try
                 Debug.Print(_Connections(x)._Client.Client.RemoteEndPoint.ToString)
@@ -63,8 +68,12 @@ Public Class Form1
                 Me.Invoke(doAppendOutput, _Connections(x)._Client.Client.RemoteEndPoint.ToString)
             Catch ex As Exception
             End Try
+
+
         Next
     End Sub
+
+
 
     Private Sub ListenForClient(monitor As MonitorInfo)
         Dim info As New ConnectionInfo(monitor)
@@ -117,7 +126,10 @@ Public Class Form1
                                 messageBytes.Add(value)
                             End If
                         End While
-                        Me.Invoke(doAppendOutput, System.Text.Encoding.ASCII.GetString(messageBytes.ToArray))
+                        Dim message As String = System.Text.Encoding.ASCII.GetString(messageBytes.ToArray)
+
+                        ResponseHandler(message)
+                        Me.Invoke(doAppendOutput, info.Client.Client.RemoteEndPoint.ToString + ": " + message + ", " + DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss"))
                     End If
                 Else
                     'Clean-up any closed client connections
@@ -148,12 +160,16 @@ Public Class Form1
         If txtConsole.TextLength > 0 Then
             txtConsole.AppendText(ControlChars.NewLine)
         End If
-        txtConsole.AppendText(message)
+        txtConsole.AppendText(">> " + message)
         txtConsole.ScrollToCaret()
     End Sub
 
     Private Sub UpdateConnectionCountLabel()
         ConnectionCountLabel.Text = String.Format("{0} Connections", _Connections.Count)
+        Dim btnName As String = "Machine" + _Connections.Count.ToString
+        Dim b As New Button
+        b = Me.Controls.Find(btnName, True).First
+        b.BackColor = Color.Lime
     End Sub
 
     Private Sub PortTextBox_Validating_1(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles PortTextBox.Validating
@@ -164,6 +180,16 @@ Public Class Form1
             e.Cancel = True
         End If
     End Sub
+
+    Private Sub ResponseHandler(message As String)
+        MsgBox(message)
+        Dim strArr() As String
+        Dim count As Integer
+        strArr = message.Split(",")
+
+
+    End Sub
+
 End Class
 
 

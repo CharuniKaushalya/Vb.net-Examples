@@ -1,5 +1,11 @@
 ﻿Public Class Form2
 
+    Dim eid As String = ""
+    Public Sub New(ByVal empid As String)
+        InitializeComponent()
+        eid = empid
+    End Sub
+
 
 
     Declare Auto Function SendMessage Lib "user32.dll" (ByVal hWnd As IntPtr, ByVal msg As Integer, ByVal wParam As Integer, ByVal lParam As Integer) As Integer
@@ -20,6 +26,9 @@
     End Sub
 
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        TextBox1.Text = eid
+
+
 
         Txt5.Text = "10"
     End Sub

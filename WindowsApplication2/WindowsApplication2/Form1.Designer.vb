@@ -23,17 +23,17 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.btnExit = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.Button10 = New System.Windows.Forms.Button()
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.Button6 = New System.Windows.Forms.Button()
+        Me.Machine2 = New System.Windows.Forms.Button()
+        Me.Machine1 = New System.Windows.Forms.Button()
         Me.Button9 = New System.Windows.Forms.Button()
-        Me.Button5 = New System.Windows.Forms.Button()
-        Me.Button7 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button8 = New System.Windows.Forms.Button()
+        Me.Machine3 = New System.Windows.Forms.Button()
+        Me.Machine5 = New System.Windows.Forms.Button()
+        Me.Machine4 = New System.Windows.Forms.Button()
+        Me.Machine6 = New System.Windows.Forms.Button()
+        Me.Button10 = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
@@ -54,10 +54,11 @@ Partial Class Form1
         Me.Label14 = New System.Windows.Forms.Label()
         Me.btnServerStart = New System.Windows.Forms.Button()
         Me.txtConsole = New System.Windows.Forms.RichTextBox()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.btnPrintClients = New System.Windows.Forms.Button()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ConnectionCountLabel = New System.Windows.Forms.ToolStripStatusLabel()
         Me.PortTextBox = New System.Windows.Forms.TextBox()
+        Me.Label15 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -75,35 +76,34 @@ Partial Class Form1
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "EFKA SMART MODULE"
         '
-        'Button2
+        'btnExit
         '
-        Me.Button2.AutoSize = True
-        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.Location = New System.Drawing.Point(305, 487)
-        Me.Button2.Margin = New System.Windows.Forms.Padding(5)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 23)
-        Me.Button2.TabIndex = 2
-        Me.Button2.Text = "Exit"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.btnExit.AutoSize = True
+        Me.btnExit.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnExit.Location = New System.Drawing.Point(739, 482)
+        Me.btnExit.Margin = New System.Windows.Forms.Padding(5)
+        Me.btnExit.Name = "btnExit"
+        Me.btnExit.Size = New System.Drawing.Size(123, 26)
+        Me.btnExit.TabIndex = 2
+        Me.btnExit.Text = "Exit"
+        Me.btnExit.UseVisualStyleBackColor = True
         '
         'Panel1
         '
         Me.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel1.Controls.Add(Me.Label2)
-        Me.Panel1.Controls.Add(Me.Button10)
-        Me.Panel1.Controls.Add(Me.Button2)
-        Me.Panel1.Controls.Add(Me.Button4)
-        Me.Panel1.Controls.Add(Me.Button6)
+        Me.Panel1.Controls.Add(Me.Machine2)
+        Me.Panel1.Controls.Add(Me.Machine1)
         Me.Panel1.Controls.Add(Me.Button9)
-        Me.Panel1.Controls.Add(Me.Button5)
-        Me.Panel1.Controls.Add(Me.Button7)
-        Me.Panel1.Controls.Add(Me.Button3)
-        Me.Panel1.Controls.Add(Me.Button8)
+        Me.Panel1.Controls.Add(Me.Machine3)
+        Me.Panel1.Controls.Add(Me.Machine5)
+        Me.Panel1.Controls.Add(Me.Machine4)
+        Me.Panel1.Controls.Add(Me.Machine6)
         Me.Panel1.Location = New System.Drawing.Point(562, 11)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(383, 523)
+        Me.Panel1.Size = New System.Drawing.Size(300, 326)
         Me.Panel1.TabIndex = 7
         '
         'Label2
@@ -117,114 +117,114 @@ Partial Class Form1
         Me.Label2.TabIndex = 8
         Me.Label2.Text = "Module Layout"
         '
-        'Button10
+        'Machine2
         '
-        Me.Button10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button10.Location = New System.Drawing.Point(23, 487)
-        Me.Button10.Margin = New System.Windows.Forms.Padding(2)
-        Me.Button10.Name = "Button10"
-        Me.Button10.Size = New System.Drawing.Size(75, 23)
-        Me.Button10.TabIndex = 8
-        Me.Button10.Text = "Yamazumi"
-        Me.Button10.UseVisualStyleBackColor = True
+        Me.Machine2.AutoSize = True
+        Me.Machine2.BackColor = System.Drawing.Color.Red
+        Me.Machine2.BackgroundImage = Global.WindowsApplication2.My.Resources.Resources.head
+        Me.Machine2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Machine2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Machine2.Location = New System.Drawing.Point(182, 79)
+        Me.Machine2.Margin = New System.Windows.Forms.Padding(5)
+        Me.Machine2.Name = "Machine2"
+        Me.Machine2.Size = New System.Drawing.Size(70, 50)
+        Me.Machine2.TabIndex = 4
+        Me.Machine2.UseVisualStyleBackColor = False
         '
-        'Button4
+        'Machine1
         '
-        Me.Button4.AutoSize = True
-        Me.Button4.BackColor = System.Drawing.Color.Lime
-        Me.Button4.BackgroundImage = Global.WindowsApplication2.My.Resources.Resources.head
-        Me.Button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.Button4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button4.Location = New System.Drawing.Point(112, 62)
-        Me.Button4.Margin = New System.Windows.Forms.Padding(5)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(70, 50)
-        Me.Button4.TabIndex = 4
-        Me.Button4.UseVisualStyleBackColor = False
-        '
-        'Button6
-        '
-        Me.Button6.AutoSize = True
-        Me.Button6.BackColor = System.Drawing.Color.Lime
-        Me.Button6.BackgroundImage = Global.WindowsApplication2.My.Resources.Resources.head
-        Me.Button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.Button6.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button6.Location = New System.Drawing.Point(42, 122)
-        Me.Button6.Margin = New System.Windows.Forms.Padding(5)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(70, 50)
-        Me.Button6.TabIndex = 6
-        Me.Button6.UseVisualStyleBackColor = False
+        Me.Machine1.AutoSize = True
+        Me.Machine1.BackColor = System.Drawing.Color.Red
+        Me.Machine1.BackgroundImage = Global.WindowsApplication2.My.Resources.Resources.head
+        Me.Machine1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Machine1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Machine1.Location = New System.Drawing.Point(42, 76)
+        Me.Machine1.Margin = New System.Windows.Forms.Padding(5)
+        Me.Machine1.Name = "Machine1"
+        Me.Machine1.Size = New System.Drawing.Size(70, 50)
+        Me.Machine1.TabIndex = 6
+        Me.Machine1.UseVisualStyleBackColor = False
         '
         'Button9
         '
         Me.Button9.AutoSize = True
-        Me.Button9.BackColor = System.Drawing.Color.Lime
+        Me.Button9.BackColor = System.Drawing.Color.Red
         Me.Button9.BackgroundImage = Global.WindowsApplication2.My.Resources.Resources.head
         Me.Button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.Button9.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button9.Location = New System.Drawing.Point(42, 310)
+        Me.Button9.Location = New System.Drawing.Point(42, 261)
         Me.Button9.Margin = New System.Windows.Forms.Padding(5)
         Me.Button9.Name = "Button9"
         Me.Button9.Size = New System.Drawing.Size(70, 50)
         Me.Button9.TabIndex = 3
         Me.Button9.UseVisualStyleBackColor = False
         '
-        'Button5
+        'Machine3
         '
-        Me.Button5.AutoSize = True
-        Me.Button5.BackColor = System.Drawing.Color.Red
-        Me.Button5.BackgroundImage = Global.WindowsApplication2.My.Resources.Resources.head
-        Me.Button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.Button5.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button5.Location = New System.Drawing.Point(42, 187)
-        Me.Button5.Margin = New System.Windows.Forms.Padding(5)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(70, 50)
-        Me.Button5.TabIndex = 5
-        Me.Button5.UseVisualStyleBackColor = False
+        Me.Machine3.AutoSize = True
+        Me.Machine3.BackColor = System.Drawing.Color.Red
+        Me.Machine3.BackgroundImage = Global.WindowsApplication2.My.Resources.Resources.head
+        Me.Machine3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Machine3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Machine3.Location = New System.Drawing.Point(42, 138)
+        Me.Machine3.Margin = New System.Windows.Forms.Padding(5)
+        Me.Machine3.Name = "Machine3"
+        Me.Machine3.Size = New System.Drawing.Size(70, 50)
+        Me.Machine3.TabIndex = 5
+        Me.Machine3.UseVisualStyleBackColor = False
         '
-        'Button7
+        'Machine5
         '
-        Me.Button7.AutoSize = True
-        Me.Button7.BackColor = System.Drawing.Color.Lime
-        Me.Button7.BackgroundImage = Global.WindowsApplication2.My.Resources.Resources.head
-        Me.Button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.Button7.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button7.Location = New System.Drawing.Point(42, 250)
-        Me.Button7.Margin = New System.Windows.Forms.Padding(5)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(70, 50)
-        Me.Button7.TabIndex = 3
-        Me.Button7.UseVisualStyleBackColor = False
+        Me.Machine5.AutoSize = True
+        Me.Machine5.BackColor = System.Drawing.Color.Red
+        Me.Machine5.BackgroundImage = Global.WindowsApplication2.My.Resources.Resources.head
+        Me.Machine5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Machine5.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Machine5.Location = New System.Drawing.Point(42, 198)
+        Me.Machine5.Margin = New System.Windows.Forms.Padding(5)
+        Me.Machine5.Name = "Machine5"
+        Me.Machine5.Size = New System.Drawing.Size(70, 50)
+        Me.Machine5.TabIndex = 3
+        Me.Machine5.UseVisualStyleBackColor = False
         '
-        'Button3
+        'Machine4
         '
-        Me.Button3.AutoSize = True
-        Me.Button3.BackColor = System.Drawing.Color.Red
-        Me.Button3.BackgroundImage = Global.WindowsApplication2.My.Resources.Resources.head
-        Me.Button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button3.Location = New System.Drawing.Point(182, 122)
-        Me.Button3.Margin = New System.Windows.Forms.Padding(5)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(70, 50)
-        Me.Button3.TabIndex = 3
-        Me.Button3.UseVisualStyleBackColor = False
+        Me.Machine4.AutoSize = True
+        Me.Machine4.BackColor = System.Drawing.Color.Red
+        Me.Machine4.BackgroundImage = Global.WindowsApplication2.My.Resources.Resources.head
+        Me.Machine4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Machine4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Machine4.Location = New System.Drawing.Point(182, 139)
+        Me.Machine4.Margin = New System.Windows.Forms.Padding(5)
+        Me.Machine4.Name = "Machine4"
+        Me.Machine4.Size = New System.Drawing.Size(70, 50)
+        Me.Machine4.TabIndex = 3
+        Me.Machine4.UseVisualStyleBackColor = False
         '
-        'Button8
+        'Machine6
         '
-        Me.Button8.AutoSize = True
-        Me.Button8.BackColor = System.Drawing.Color.Lime
-        Me.Button8.BackgroundImage = Global.WindowsApplication2.My.Resources.Resources.head
-        Me.Button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.Button8.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button8.Location = New System.Drawing.Point(182, 187)
-        Me.Button8.Margin = New System.Windows.Forms.Padding(5)
-        Me.Button8.Name = "Button8"
-        Me.Button8.Size = New System.Drawing.Size(70, 50)
-        Me.Button8.TabIndex = 3
-        Me.Button8.UseVisualStyleBackColor = False
+        Me.Machine6.AutoSize = True
+        Me.Machine6.BackColor = System.Drawing.Color.Red
+        Me.Machine6.BackgroundImage = Global.WindowsApplication2.My.Resources.Resources.head
+        Me.Machine6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Machine6.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Machine6.Location = New System.Drawing.Point(182, 198)
+        Me.Machine6.Margin = New System.Windows.Forms.Padding(5)
+        Me.Machine6.Name = "Machine6"
+        Me.Machine6.Size = New System.Drawing.Size(70, 50)
+        Me.Machine6.TabIndex = 3
+        Me.Machine6.UseVisualStyleBackColor = False
+        '
+        'Button10
+        '
+        Me.Button10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button10.Location = New System.Drawing.Point(739, 452)
+        Me.Button10.Margin = New System.Windows.Forms.Padding(2)
+        Me.Button10.Name = "Button10"
+        Me.Button10.Size = New System.Drawing.Size(123, 23)
+        Me.Button10.TabIndex = 8
+        Me.Button10.Text = "Yamazumi"
+        Me.Button10.UseVisualStyleBackColor = True
         '
         'Label3
         '
@@ -419,9 +419,9 @@ Partial Class Form1
         'btnServerStart
         '
         Me.btnServerStart.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnServerStart.Location = New System.Drawing.Point(157, 428)
+        Me.btnServerStart.Location = New System.Drawing.Point(739, 423)
         Me.btnServerStart.Name = "btnServerStart"
-        Me.btnServerStart.Size = New System.Drawing.Size(123, 37)
+        Me.btnServerStart.Size = New System.Drawing.Size(123, 23)
         Me.btnServerStart.TabIndex = 15
         Me.btnServerStart.Text = "Server Start"
         Me.btnServerStart.UseVisualStyleBackColor = True
@@ -431,28 +431,28 @@ Partial Class Form1
         Me.txtConsole.BackColor = System.Drawing.SystemColors.MenuText
         Me.txtConsole.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtConsole.ForeColor = System.Drawing.Color.LimeGreen
-        Me.txtConsole.Location = New System.Drawing.Point(56, 471)
+        Me.txtConsole.Location = New System.Drawing.Point(47, 424)
         Me.txtConsole.Name = "txtConsole"
-        Me.txtConsole.Size = New System.Drawing.Size(472, 178)
+        Me.txtConsole.Size = New System.Drawing.Size(524, 223)
         Me.txtConsole.TabIndex = 16
         Me.txtConsole.Text = ""
         '
-        'Button1
+        'btnPrintClients
         '
-        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(292, 428)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(123, 37)
-        Me.Button1.TabIndex = 17
-        Me.Button1.Text = "Print Client"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnPrintClients.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnPrintClients.Location = New System.Drawing.Point(592, 452)
+        Me.btnPrintClients.Name = "btnPrintClients"
+        Me.btnPrintClients.Size = New System.Drawing.Size(123, 23)
+        Me.btnPrintClients.TabIndex = 17
+        Me.btnPrintClients.Text = "Print Clients"
+        Me.btnPrintClients.UseVisualStyleBackColor = True
         '
         'StatusStrip1
         '
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ConnectionCountLabel})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 639)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 659)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(954, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(884, 22)
         Me.StatusStrip1.TabIndex = 19
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -465,20 +465,34 @@ Partial Class Form1
         'PortTextBox
         '
         Me.PortTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.PortTextBox.Location = New System.Drawing.Point(69, 435)
+        Me.PortTextBox.Location = New System.Drawing.Point(641, 423)
         Me.PortTextBox.Name = "PortTextBox"
         Me.PortTextBox.Size = New System.Drawing.Size(74, 22)
         Me.PortTextBox.TabIndex = 20
         Me.PortTextBox.Text = "1315"
         '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label15.Location = New System.Drawing.Point(589, 430)
+        Me.Label15.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(38, 16)
+        Me.Label15.TabIndex = 21
+        Me.Label15.Text = "Port: "
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(20.0!, 37.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(954, 661)
+        Me.ClientSize = New System.Drawing.Size(884, 681)
+        Me.Controls.Add(Me.Label15)
+        Me.Controls.Add(Me.Button10)
         Me.Controls.Add(Me.PortTextBox)
+        Me.Controls.Add(Me.btnExit)
         Me.Controls.Add(Me.StatusStrip1)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.btnPrintClients)
         Me.Controls.Add(Me.txtConsole)
         Me.Controls.Add(Me.btnServerStart)
         Me.Controls.Add(Me.Label14)
@@ -503,8 +517,7 @@ Partial Class Form1
         Me.Controls.Add(Me.Label1)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Margin = New System.Windows.Forms.Padding(10, 9, 10, 9)
-        Me.MaximumSize = New System.Drawing.Size(970, 700)
-        Me.MinimumSize = New System.Drawing.Size(900, 700)
+        Me.MaximumSize = New System.Drawing.Size(1000, 1000)
         Me.Name = "Form1"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds
         Me.Text = "EFKA HOME"
@@ -518,14 +531,14 @@ Partial Class Form1
     End Sub
 
     Friend WithEvents Label1 As Label
-    Friend WithEvents Button2 As Button
-    Friend WithEvents Button5 As Button
-    Friend WithEvents Button7 As Button
+    Friend WithEvents btnExit As Button
+    Friend WithEvents Machine3 As Button
+    Friend WithEvents Machine5 As Button
     Friend WithEvents Button9 As Button
-    Friend WithEvents Button8 As Button
-    Friend WithEvents Button3 As Button
-    Friend WithEvents Button6 As Button
-    Friend WithEvents Button4 As Button
+    Friend WithEvents Machine6 As Button
+    Friend WithEvents Machine4 As Button
+    Friend WithEvents Machine1 As Button
+    Friend WithEvents Machine2 As Button
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Button10 As Button
     Friend WithEvents Label2 As Label
@@ -549,8 +562,9 @@ Partial Class Form1
     Friend WithEvents Label14 As Label
     Friend WithEvents btnServerStart As Button
     Friend WithEvents txtConsole As RichTextBox
-    Friend WithEvents Button1 As Button
+    Friend WithEvents btnPrintClients As Button
     Friend WithEvents StatusStrip1 As StatusStrip
     Friend WithEvents ConnectionCountLabel As ToolStripStatusLabel
     Friend WithEvents PortTextBox As TextBox
+    Friend WithEvents Label15 As Label
 End Class
