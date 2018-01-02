@@ -25,10 +25,11 @@ Partial Class Form1
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnExit = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Machine7 = New System.Windows.Forms.Button()
+        Me.Label18 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Machine2 = New System.Windows.Forms.Button()
         Me.Machine1 = New System.Windows.Forms.Button()
-        Me.Button9 = New System.Windows.Forms.Button()
         Me.Machine3 = New System.Windows.Forms.Button()
         Me.Machine5 = New System.Windows.Forms.Button()
         Me.Machine4 = New System.Windows.Forms.Button()
@@ -99,10 +100,11 @@ Partial Class Form1
         '
         Me.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel1.Controls.Add(Me.Machine7)
+        Me.Panel1.Controls.Add(Me.Label18)
         Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Controls.Add(Me.Machine2)
         Me.Panel1.Controls.Add(Me.Machine1)
-        Me.Panel1.Controls.Add(Me.Button9)
         Me.Panel1.Controls.Add(Me.Machine3)
         Me.Panel1.Controls.Add(Me.Machine5)
         Me.Panel1.Controls.Add(Me.Machine4)
@@ -112,6 +114,30 @@ Partial Class Form1
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(300, 326)
         Me.Panel1.TabIndex = 7
+        '
+        'Machine7
+        '
+        Me.Machine7.AutoSize = True
+        Me.Machine7.BackColor = System.Drawing.Color.Red
+        Me.Machine7.BackgroundImage = Global.WindowsApplication2.My.Resources.Resources.head
+        Me.Machine7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Machine7.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Machine7.Location = New System.Drawing.Point(42, 232)
+        Me.Machine7.Margin = New System.Windows.Forms.Padding(5)
+        Me.Machine7.Name = "Machine7"
+        Me.Machine7.Size = New System.Drawing.Size(70, 50)
+        Me.Machine7.TabIndex = 10
+        Me.Machine7.UseVisualStyleBackColor = False
+        '
+        'Label18
+        '
+        Me.Label18.AutoSize = True
+        Me.Label18.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label18.ForeColor = System.Drawing.Color.Red
+        Me.Label18.Location = New System.Drawing.Point(39, 297)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(0, 16)
+        Me.Label18.TabIndex = 9
         '
         'Label2
         '
@@ -152,20 +178,6 @@ Partial Class Form1
         Me.Machine1.TabIndex = 6
         Me.Machine1.UseVisualStyleBackColor = False
         '
-        'Button9
-        '
-        Me.Button9.AutoSize = True
-        Me.Button9.BackColor = System.Drawing.Color.Red
-        Me.Button9.BackgroundImage = Global.WindowsApplication2.My.Resources.Resources.head
-        Me.Button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.Button9.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button9.Location = New System.Drawing.Point(42, 261)
-        Me.Button9.Margin = New System.Windows.Forms.Padding(5)
-        Me.Button9.Name = "Button9"
-        Me.Button9.Size = New System.Drawing.Size(70, 50)
-        Me.Button9.TabIndex = 3
-        Me.Button9.UseVisualStyleBackColor = False
-        '
         'Machine3
         '
         Me.Machine3.AutoSize = True
@@ -173,7 +185,7 @@ Partial Class Form1
         Me.Machine3.BackgroundImage = Global.WindowsApplication2.My.Resources.Resources.head
         Me.Machine3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.Machine3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Machine3.Location = New System.Drawing.Point(42, 116)
+        Me.Machine3.Location = New System.Drawing.Point(42, 108)
         Me.Machine3.Margin = New System.Windows.Forms.Padding(5)
         Me.Machine3.Name = "Machine3"
         Me.Machine3.Size = New System.Drawing.Size(70, 50)
@@ -187,7 +199,7 @@ Partial Class Form1
         Me.Machine5.BackgroundImage = Global.WindowsApplication2.My.Resources.Resources.head
         Me.Machine5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.Machine5.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Machine5.Location = New System.Drawing.Point(42, 189)
+        Me.Machine5.Location = New System.Drawing.Point(42, 172)
         Me.Machine5.Margin = New System.Windows.Forms.Padding(5)
         Me.Machine5.Name = "Machine5"
         Me.Machine5.Size = New System.Drawing.Size(70, 50)
@@ -201,7 +213,7 @@ Partial Class Form1
         Me.Machine4.BackgroundImage = Global.WindowsApplication2.My.Resources.Resources.head
         Me.Machine4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.Machine4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Machine4.Location = New System.Drawing.Point(182, 116)
+        Me.Machine4.Location = New System.Drawing.Point(182, 108)
         Me.Machine4.Margin = New System.Windows.Forms.Padding(5)
         Me.Machine4.Name = "Machine4"
         Me.Machine4.Size = New System.Drawing.Size(70, 50)
@@ -215,7 +227,7 @@ Partial Class Form1
         Me.Machine6.BackgroundImage = Global.WindowsApplication2.My.Resources.Resources.head
         Me.Machine6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.Machine6.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Machine6.Location = New System.Drawing.Point(182, 189)
+        Me.Machine6.Location = New System.Drawing.Point(182, 168)
         Me.Machine6.Margin = New System.Windows.Forms.Padding(5)
         Me.Machine6.Name = "Machine6"
         Me.Machine6.Size = New System.Drawing.Size(70, 50)
@@ -595,7 +607,6 @@ Partial Class Form1
     Friend WithEvents btnExit As Button
     Friend WithEvents Machine3 As Button
     Friend WithEvents Machine5 As Button
-    Friend WithEvents Button9 As Button
     Friend WithEvents Machine6 As Button
     Friend WithEvents Machine4 As Button
     Friend WithEvents Machine1 As Button
@@ -632,4 +643,6 @@ Partial Class Form1
     Friend WithEvents Label16 As Label
     Friend WithEvents Panel3 As Panel
     Friend WithEvents Label17 As Label
+    Friend WithEvents Label18 As Label
+    Friend WithEvents Machine7 As Button
 End Class

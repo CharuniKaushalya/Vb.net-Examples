@@ -12,10 +12,13 @@ Public Class Form1
     Private _ConnectionMontior As Task
     Private ServerStarted As Boolean = False
     Private ConnectionID As Integer = 0
+    Dim LostConnectionIDs As List(Of Integer)
     'Create delegate for updating output display
     Dim doAppendOutput As New Action(Of String)(AddressOf AppendOutput)
     'Create delegate for updating connection count label
     Dim doUpdateConnectionCountLabel As New Action(AddressOf UpdateConnectionCountLabel)
+    'Create delegate for updating Error label
+    Dim doUpdateErrorLabel As New Action(AddressOf UpdateErrorLabel)
 
 
     Declare Auto Function SendMessage Lib "user32.dll" (ByVal hWnd As IntPtr, ByVal msg As Integer, ByVal wParam As Integer, ByVal lParam As Integer) As Integer
@@ -35,8 +38,7 @@ Public Class Form1
                 MachineInfo = _Connections(x).MachineInfo
             End If
         Next
-        Dim pass As String = "10"
-        Dim frm As New Form2(pass, MachineInfo)
+        Dim frm As New Form2(MachineInfo)
         frm.Show()
         Me.Hide()
     End Sub
@@ -88,14 +90,24 @@ Public Class Form1
         If monitorInfo.Listener IsNot Nothing AndAlso Not monitorInfo.Cancel Then
             Dim info As ConnectionInfo = CType(result.AsyncState, ConnectionInfo)
             ConnectionID += 1
-            info.ID = ConnectionID
-            monitorInfo.Connections.Add(info)
-            info.AcceptClient(result)
-            ListenForClient(monitorInfo)
-            info.AwaitData()
-            UpdateClientButton(ConnectionID, "Active")
+            'Handle multiple connecion
+            If ConnectionID > 7 Then
+                Dim doUpdateErrorLabel As New Action(AddressOf UpdateErrorLabel)
+                Invoke(doUpdateErrorLabel)
+            Else
+                info.ID = ConnectionID
+                UpdateClientButton(ConnectionID, "Active")
+                monitorInfo.Connections.Add(info)
+                info.AcceptClient(result)
+                ListenForClient(monitorInfo)
+                info.AwaitData()
+
+
+            End If
             Dim doUpdateConnectionCountLabel As New Action(AddressOf UpdateConnectionCountLabel)
             Invoke(doUpdateConnectionCountLabel)
+
+
         End If
     End Sub
 
@@ -135,12 +147,14 @@ Public Class Form1
                             End While
                             Dim message As String = System.Text.Encoding.ASCII.GetString(messageBytes.ToArray)
 
-                            ResponseHandler(message, info)
+
                             Me.Invoke(doAppendOutput, info.Client.Client.RemoteEndPoint.ToString + ": " + message + ", " + DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss"))
+                            ResponseHandler(message, info)
                         End If
                     Else
                         'Clean-up any closed client connections
                         monitorInfo.Connections.Remove(info)
+
                         UpdateClientButton(info.ID, "InActive")
                         lostCount += 1
                     End If
@@ -181,6 +195,10 @@ Public Class Form1
         ConnectionCountLabel.Text = String.Format("{0} Connections", _Connections.Count)
     End Sub
 
+    Private Sub UpdateErrorLabel()
+        Label18.Text = "Maximum number of clients can be connect is 7"
+    End Sub
+
     Private Sub UpdateClientButton(ID As Integer, Status As String)
         Dim btnName As String = "Machine" + ID.ToString
         Dim b As New Button
@@ -211,6 +229,91 @@ Public Class Form1
         Dim TotalRunTime As Integer = CInt(strArr(2))
         Dim StoptimeBetweenSeams As Integer = CInt(strArr(3))
         info.MachineInfo = New MachineInfo(TimeForCurrentSean, AverageSpeed, TotalRunTime, StoptimeBetweenSeams)
+    End Sub
+
+    Private Sub Machine1_Click(sender As Object, e As EventArgs) Handles Machine1.Click
+        Dim MachineInfo As MachineInfo
+        Dim btnName As String = DirectCast(sender, Button).Name
+        Dim btnID As String = btnName.Substring(btnName.Length - 1)
+        For x As Integer = 0 To _Connections.Count - 1
+            If Not _Connections(x).ID = 0 And _Connections(x).ID = CInt(btnID) Then
+                MachineInfo = _Connections(x).MachineInfo
+            End If
+        Next
+        Dim frm As New Form2(MachineInfo)
+        frm.Show()
+        Me.Hide()
+    End Sub
+
+    Private Sub Machine3_Click(sender As Object, e As EventArgs) Handles Machine3.Click
+        Dim MachineInfo As MachineInfo
+        Dim btnName As String = DirectCast(sender, Button).Name
+        Dim btnID As String = btnName.Substring(btnName.Length - 1)
+        For x As Integer = 0 To _Connections.Count - 1
+            If Not _Connections(x).ID = 0 And _Connections(x).ID = CInt(btnID) Then
+                MachineInfo = _Connections(x).MachineInfo
+            End If
+        Next
+        Dim frm As New Form2(MachineInfo)
+        frm.Show()
+        Me.Hide()
+    End Sub
+
+    Private Sub Machine4_Click(sender As Object, e As EventArgs) Handles Machine4.Click
+        Dim MachineInfo As MachineInfo
+        Dim btnName As String = DirectCast(sender, Button).Name
+        Dim btnID As String = btnName.Substring(btnName.Length - 1)
+        For x As Integer = 0 To _Connections.Count - 1
+            If Not _Connections(x).ID = 0 And _Connections(x).ID = CInt(btnID) Then
+                MachineInfo = _Connections(x).MachineInfo
+            End If
+        Next
+        Dim frm As New Form2(MachineInfo)
+        frm.Show()
+        Me.Hide()
+    End Sub
+
+    Private Sub Machine5_Click(sender As Object, e As EventArgs) Handles Machine5.Click
+        Dim MachineInfo As MachineInfo
+        Dim btnName As String = DirectCast(sender, Button).Name
+        Dim btnID As String = btnName.Substring(btnName.Length - 1)
+        For x As Integer = 0 To _Connections.Count - 1
+            If Not _Connections(x).ID = 0 And _Connections(x).ID = CInt(btnID) Then
+                MachineInfo = _Connections(x).MachineInfo
+            End If
+        Next
+        Dim frm As New Form2(MachineInfo)
+        frm.Show()
+        Me.Hide()
+    End Sub
+
+    Private Sub Machine6_Click(sender As Object, e As EventArgs) Handles Machine6.Click
+        Dim MachineInfo As MachineInfo
+        Dim btnName As String = DirectCast(sender, Button).Name
+        Dim btnID As String = btnName.Substring(btnName.Length - 1)
+        For x As Integer = 0 To _Connections.Count - 1
+            If Not _Connections(x).ID = 0 And _Connections(x).ID = CInt(btnID) Then
+                MachineInfo = _Connections(x).MachineInfo
+            End If
+        Next
+        Dim frm As New Form2(MachineInfo)
+        frm.Show()
+        Me.Hide()
+    End Sub
+
+
+    Private Sub Machine7_Click_1(sender As Object, e As EventArgs) Handles Machine7.Click
+        Dim MachineInfo As MachineInfo
+        Dim btnName As String = DirectCast(sender, Button).Name
+        Dim btnID As String = btnName.Substring(btnName.Length - 1)
+        For x As Integer = 0 To _Connections.Count - 1
+            If Not _Connections(x).ID = 0 And _Connections(x).ID = CInt(btnID) Then
+                MachineInfo = _Connections(x).MachineInfo
+            End If
+        Next
+        Dim frm As New Form2(MachineInfo)
+        frm.Show()
+        Me.Hide()
     End Sub
 End Class
 
