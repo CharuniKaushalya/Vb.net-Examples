@@ -2,6 +2,8 @@
 Imports System.Net.Sockets
 
 Public Class ConnectionInfo
+
+    Public Property ID As Integer
     'hold a reference to entire monitor instead of just the listener
     Private _Monitor As MonitorInfo
     Public ReadOnly Property Monitor As MonitorInfo

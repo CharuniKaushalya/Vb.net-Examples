@@ -11,11 +11,11 @@ Public Class Form1
     Private _Connections As New List(Of ConnectionInfo)
     Private _ConnectionMontior As Task
     Private ServerStarted As Boolean = False
+    Private ConnectionID As Integer = 0
     'Create delegate for updating output display
     Dim doAppendOutput As New Action(Of String)(AddressOf AppendOutput)
     'Create delegate for updating connection count label
     Dim doUpdateConnectionCountLabel As New Action(AddressOf UpdateConnectionCountLabel)
-
 
 
     Declare Auto Function SendMessage Lib "user32.dll" (ByVal hWnd As IntPtr, ByVal msg As Integer, ByVal wParam As Integer, ByVal lParam As Integer) As Integer
@@ -58,9 +58,6 @@ Public Class Form1
 
     Private Sub Button1_Click_2(sender As Object, e As EventArgs) Handles btnPrintClients.Click
         ''add Print Client Code
-        Machine4.BackColor = Color.Blue
-
-
         For x As Integer = 0 To _Connections.Count - 1
             Try
                 Debug.Print(_Connections(x)._Client.Client.RemoteEndPoint.ToString)
@@ -84,10 +81,13 @@ Public Class Form1
         Dim monitorInfo As MonitorInfo = CType(_ConnectionMontior.AsyncState, MonitorInfo)
         If monitorInfo.Listener IsNot Nothing AndAlso Not monitorInfo.Cancel Then
             Dim info As ConnectionInfo = CType(result.AsyncState, ConnectionInfo)
+            ConnectionID += 1
+            info.ID = ConnectionID
             monitorInfo.Connections.Add(info)
             info.AcceptClient(result)
             ListenForClient(monitorInfo)
             info.AwaitData()
+            UpdateClientButton(ConnectionID, "Active")
             Dim doUpdateConnectionCountLabel As New Action(AddressOf UpdateConnectionCountLabel)
             Invoke(doUpdateConnectionCountLabel)
         End If
@@ -109,33 +109,40 @@ Public Class Form1
             'Examine each connection for processing
             For index As Integer = monitorInfo.Connections.Count - 1 To 0 Step -1
                 Dim info As ConnectionInfo = monitorInfo.Connections(index)
-                If info.Client.Connected Then
-                    'Process connected client
-                    If info.DataQueue.Count > 0 Then
-                        'The code in this If-Block should be modified to build 'message' objects
-                        'according to the protocol you defined for your data transmissions.
-                        'This example simply sends all pending message bytes to the output textbox.
-                        'Without a protocol we cannot know what constitutes a complete message, so
-                        'with multiple active clients we could see part of client1's first message,
-                        'then part of a message from client2, followed by the rest of client1's
-                        'first message (assuming client1 sent more than 64 bytes).
-                        Dim messageBytes As New List(Of Byte)
-                        While info.DataQueue.Count > 0
-                            Dim value As Byte
-                            If info.DataQueue.TryDequeue(value) Then
-                                messageBytes.Add(value)
-                            End If
-                        End While
-                        Dim message As String = System.Text.Encoding.ASCII.GetString(messageBytes.ToArray)
+                Try
+                    If info.Client.Connected Then
+                        'Process connected client
+                        If info.DataQueue.Count > 0 Then
+                            'The code in this If-Block should be modified to build 'message' objects
+                            'according to the protocol you defined for your data transmissions.
+                            'This example simply sends all pending message bytes to the output textbox.
+                            'Without a protocol we cannot know what constitutes a complete message, so
+                            'with multiple active clients we could see part of client1's first message,
+                            'then part of a message from client2, followed by the rest of client1's
+                            'first message (assuming client1 sent more than 64 bytes).
+                            Dim messageBytes As New List(Of Byte)
+                            While info.DataQueue.Count > 0
+                                Dim value As Byte
+                                If info.DataQueue.TryDequeue(value) Then
+                                    messageBytes.Add(value)
+                                End If
+                            End While
+                            Dim message As String = System.Text.Encoding.ASCII.GetString(messageBytes.ToArray)
 
-                        ResponseHandler(message)
-                        Me.Invoke(doAppendOutput, info.Client.Client.RemoteEndPoint.ToString + ": " + message + ", " + DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss"))
+                            ResponseHandler(message)
+                            Me.Invoke(doAppendOutput, info.Client.Client.RemoteEndPoint.ToString + ": " + message + ", " + DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss"))
+                        End If
+                    Else
+                        'Clean-up any closed client connections
+                        monitorInfo.Connections.Remove(info)
+                        UpdateClientButton(info.ID, "InActive")
+                        lostCount += 1
                     End If
-                Else
-                    'Clean-up any closed client connections
-                    monitorInfo.Connections.Remove(info)
-                    lostCount += 1
-                End If
+
+                Catch ex As Exception
+                    Debug.Print(ex.ToString)
+                End Try
+
             Next
             If lostCount > 0 Then
                 Invoke(doUpdateConnectionCountLabel)
@@ -166,10 +173,18 @@ Public Class Form1
 
     Private Sub UpdateConnectionCountLabel()
         ConnectionCountLabel.Text = String.Format("{0} Connections", _Connections.Count)
-        Dim btnName As String = "Machine" + _Connections.Count.ToString
+    End Sub
+
+    Private Sub UpdateClientButton(ID As Integer, Status As String)
+        Dim btnName As String = "Machine" + ID.ToString
         Dim b As New Button
         b = Me.Controls.Find(btnName, True).First
-        b.BackColor = Color.Lime
+        If Status.Equals("Active") Then
+            b.BackColor = Color.Lime
+        Else
+            b.BackColor = Color.Red
+        End If
+
     End Sub
 
     Private Sub PortTextBox_Validating_1(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles PortTextBox.Validating
