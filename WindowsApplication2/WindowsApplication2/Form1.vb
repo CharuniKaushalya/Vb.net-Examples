@@ -19,6 +19,7 @@ Public Class Form1
     Dim doUpdateConnectionCountLabel As New Action(AddressOf UpdateConnectionCountLabel)
     'Create delegate for updating Error label
     Dim doUpdateErrorLabel As New Action(AddressOf UpdateErrorLabel)
+    'Create delegate for updating Error label
 
 
     Declare Auto Function SendMessage Lib "user32.dll" (ByVal hWnd As IntPtr, ByVal msg As Integer, ByVal wParam As Integer, ByVal lParam As Integer) As Integer
@@ -30,17 +31,11 @@ Public Class Form1
     End Sub
 
     Private Sub Button4_Click_1(sender As Object, e As EventArgs) Handles Machine2.Click
-        Dim MachineInfo As MachineInfo
-        Dim btnName As String = DirectCast(sender, Button).Name
-        Dim btnID As String = btnName.Substring(btnName.Length - 1)
-        For x As Integer = 0 To _Connections.Count - 1
-            If Not _Connections(x).ID = 0 And _Connections(x).ID = CInt(btnID) Then
-                MachineInfo = _Connections(x).MachineInfo
-            End If
-        Next
-        Dim frm As New Form2(MachineInfo)
-        frm.Show()
-        Me.Hide()
+        If Machine2.BackColor = Color.Red Then
+            MsgBox("Please Connect Machine ")
+        Else
+            LoadForm2(sender)
+        End If
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -96,6 +91,7 @@ Public Class Form1
                 Invoke(doUpdateErrorLabel)
             Else
                 info.ID = ConnectionID
+                info.Frm = New Form2
                 UpdateClientButton(ConnectionID, "Active")
                 monitorInfo.Connections.Add(info)
                 info.AcceptClient(result)
@@ -199,6 +195,10 @@ Public Class Form1
         Label18.Text = "Maximum number of clients can be connect is 7"
     End Sub
 
+    Private Sub UpdateErrorLabel2(message As String)
+        Label18.Text = "Maximum number of clients can be connect is 7"
+    End Sub
+
     Private Sub UpdateClientButton(ID As Integer, Status As String)
         Dim btnName As String = "Machine" + ID.ToString
         Dim b As New Button
@@ -221,99 +221,75 @@ Public Class Form1
     End Sub
 
     Private Sub ResponseHandler(message As String, info As ConnectionInfo)
-        MsgBox(message)
+        'MsgBox(message)
         Dim strArr() As String
         strArr = message.Split(",")
-        Dim TimeForCurrentSean As Integer = CInt(strArr(0))
-        Dim AverageSpeed As Integer = CInt(strArr(1))
-        Dim TotalRunTime As Integer = CInt(strArr(2))
-        Dim StoptimeBetweenSeams As Integer = CInt(strArr(3))
-        info.MachineInfo = New MachineInfo(TimeForCurrentSean, AverageSpeed, TotalRunTime, StoptimeBetweenSeams)
+        Dim machineInfo As New MachineInfo
+        machineInfo.TimeForCurrentSean = CInt(strArr(0))
+        machineInfo.AverageSpeed = CInt(strArr(1))
+        machineInfo.TotalRunTime = CInt(strArr(2))
+        machineInfo.StoptimeBetweenSeams = CInt(strArr(3))
+        info.Frm.UpdateTextFields(machineInfo)
     End Sub
 
     Private Sub Machine1_Click(sender As Object, e As EventArgs) Handles Machine1.Click
-        Dim MachineInfo As MachineInfo
+        If Machine1.BackColor = Color.Red Then
+            MsgBox("Please Connect Machine ")
+        Else
+            LoadForm2(sender)
+        End If
+    End Sub
+
+    Private Sub LoadForm2(sender As Object)
         Dim btnName As String = DirectCast(sender, Button).Name
         Dim btnID As String = btnName.Substring(btnName.Length - 1)
         For x As Integer = 0 To _Connections.Count - 1
             If Not _Connections(x).ID = 0 And _Connections(x).ID = CInt(btnID) Then
-                MachineInfo = _Connections(x).MachineInfo
+                _Connections(x).Frm.Show()
             End If
         Next
-        Dim frm As New Form2(MachineInfo)
-        frm.Show()
         Me.Hide()
     End Sub
 
     Private Sub Machine3_Click(sender As Object, e As EventArgs) Handles Machine3.Click
-        Dim MachineInfo As MachineInfo
-        Dim btnName As String = DirectCast(sender, Button).Name
-        Dim btnID As String = btnName.Substring(btnName.Length - 1)
-        For x As Integer = 0 To _Connections.Count - 1
-            If Not _Connections(x).ID = 0 And _Connections(x).ID = CInt(btnID) Then
-                MachineInfo = _Connections(x).MachineInfo
-            End If
-        Next
-        Dim frm As New Form2(MachineInfo)
-        frm.Show()
-        Me.Hide()
+        If Machine3.BackColor = Color.Red Then
+            MsgBox("Please Connect Machine ")
+        Else
+            LoadForm2(sender)
+        End If
     End Sub
 
     Private Sub Machine4_Click(sender As Object, e As EventArgs) Handles Machine4.Click
-        Dim MachineInfo As MachineInfo
-        Dim btnName As String = DirectCast(sender, Button).Name
-        Dim btnID As String = btnName.Substring(btnName.Length - 1)
-        For x As Integer = 0 To _Connections.Count - 1
-            If Not _Connections(x).ID = 0 And _Connections(x).ID = CInt(btnID) Then
-                MachineInfo = _Connections(x).MachineInfo
-            End If
-        Next
-        Dim frm As New Form2(MachineInfo)
-        frm.Show()
-        Me.Hide()
+        If Machine4.BackColor = Color.Red Then
+            MsgBox("Please Connect Machine ")
+        Else
+            LoadForm2(sender)
+        End If
     End Sub
 
     Private Sub Machine5_Click(sender As Object, e As EventArgs) Handles Machine5.Click
-        Dim MachineInfo As MachineInfo
-        Dim btnName As String = DirectCast(sender, Button).Name
-        Dim btnID As String = btnName.Substring(btnName.Length - 1)
-        For x As Integer = 0 To _Connections.Count - 1
-            If Not _Connections(x).ID = 0 And _Connections(x).ID = CInt(btnID) Then
-                MachineInfo = _Connections(x).MachineInfo
-            End If
-        Next
-        Dim frm As New Form2(MachineInfo)
-        frm.Show()
-        Me.Hide()
+        If Machine5.BackColor = Color.Red Then
+            MsgBox("Please Connect Machine ")
+        Else
+            LoadForm2(sender)
+        End If
     End Sub
 
     Private Sub Machine6_Click(sender As Object, e As EventArgs) Handles Machine6.Click
-        Dim MachineInfo As MachineInfo
-        Dim btnName As String = DirectCast(sender, Button).Name
-        Dim btnID As String = btnName.Substring(btnName.Length - 1)
-        For x As Integer = 0 To _Connections.Count - 1
-            If Not _Connections(x).ID = 0 And _Connections(x).ID = CInt(btnID) Then
-                MachineInfo = _Connections(x).MachineInfo
-            End If
-        Next
-        Dim frm As New Form2(MachineInfo)
-        frm.Show()
-        Me.Hide()
+        If Machine6.BackColor = Color.Red Then
+            MsgBox("Please Connect Machine ")
+        Else
+            LoadForm2(sender)
+        End If
     End Sub
 
 
     Private Sub Machine7_Click_1(sender As Object, e As EventArgs) Handles Machine7.Click
-        Dim MachineInfo As MachineInfo
-        Dim btnName As String = DirectCast(sender, Button).Name
-        Dim btnID As String = btnName.Substring(btnName.Length - 1)
-        For x As Integer = 0 To _Connections.Count - 1
-            If Not _Connections(x).ID = 0 And _Connections(x).ID = CInt(btnID) Then
-                MachineInfo = _Connections(x).MachineInfo
-            End If
-        Next
-        Dim frm As New Form2(MachineInfo)
-        frm.Show()
-        Me.Hide()
+        If Machine7.BackColor = Color.Red Then
+            MsgBox("Please Connect Machine ")
+        Else
+            LoadForm2(sender)
+        End If
     End Sub
 End Class
 

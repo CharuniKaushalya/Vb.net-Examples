@@ -1,15 +1,7 @@
 ﻿Public Class Form2
 
-    Dim machineInfo As MachineInfo
-    Public Sub New(MachineInfo As MachineInfo)
+    Public Sub New()
         InitializeComponent()
-        MachineInfo = MachineInfo
-        If MachineInfo IsNot Nothing Then
-            TextBox5.Text = MachineInfo.TimeForCurrentSean
-            TextBox2.Text = MachineInfo.AverageSpeed
-            TextBox3.Text = MachineInfo.TotalRunTime
-            TextBox4.Text = MachineInfo.StoptimeBetweenSeams
-        End If
     End Sub
 
 
@@ -27,7 +19,7 @@
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Me.Close()
+        Me.Hide()
         Form1.Show()
     End Sub
 
@@ -45,6 +37,19 @@
             ProgressBar1.ForeColor = Color.Green
         Else
             ChangeProgBarColor(ProgressBar1, ProgressBarColor.Red)
+        End If
+    End Sub
+
+    Delegate Sub _cUpdate(machineInfo As MachineInfo)
+    Public Sub UpdateTextFields(machineInfo As MachineInfo)
+        On Error Resume Next
+        If InvokeRequired Then
+            Invoke(New _cUpdate(AddressOf UpdateTextFields), machineInfo)
+        Else
+            TextBox5.Text = machineInfo.TimeForCurrentSean
+            TextBox2.Text = machineInfo.AverageSpeed
+            TextBox3.Text = machineInfo.TotalRunTime
+            TextBox4.Text = machineInfo.StoptimeBetweenSeams
         End If
     End Sub
 End Class
